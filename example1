@@ -1,0 +1,22 @@
+from tkinter import Tk, Label, Button
+
+class MyFirstGUI:
+    def __init__(self, master):
+        master.title("Simple.")
+        master.geometry("500x500")
+        master.resizable(0,0)
+        self.label = Label(master, text="\n\n\nHello! Click on next!\n\n\n")
+        self.label.pack()
+        
+
+        self.hello_button = Button(master, text="Next", command=self.hello)
+        self.hello_button.pack()
+        
+    def hello(self):
+        print("Greetings!")
+
+root = Tk()
+
+my_gui = MyFirstGUI(root)
+
+root.mainloop()
