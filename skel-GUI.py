@@ -69,11 +69,29 @@ class PageThree(Frame):
 		Frame.__init__(self, parent)
 		self.controller=controller
 		Label(self, text="Feedback").pack()
-		Button(self, text="Next", command=lambda:self.closeCur(controller)).pack()
+		Button(self, text="Next", command=lambda:self.closeCur(controler)).pack()
+		val=IntVar()
+		val.set(0)
+		Label(self, text="Rate your experience").pack()
+		rating = [("Excellent",1),
+				("Very Good",2),
+				("Good",3),
+				("Bad",4),
+				("Very Bad",5)]
+		for v,r in enumerate(rating):
+			Radiobutton(self, 
+				text=r,
+				padx = 20, 
+				variable=val, 
+				command=lambda:self.ShowChoice(val),
+				value=v).pack(anchor=W)
 
 	def closeCur(self,controller):
 		self.pack_forget()
 		controller.show_frame(PageFour)
+
+	def ShowChoice(self,val):
+		print(val.get())
 
 
 class PageFour(Frame):
